@@ -1,71 +1,46 @@
 (function () {
     var canvas = document.getElementById("balloon-canvas"),
-        ctx = canvas.getContext("2d"),
-        balloonSpeed = 10,
-        balloon = new HotAirBalloon(100, 200, 1);
+        ctx = canvas.getContext("2d");
+
+    var cloudsCanvas = document.getElementById("clouds-canvas"),
+        cloudsCtx = cloudsCanvas.getContext("2d");
+
+    //create The balloon
+    var balloonSpeed = 1,
+        ballonPositionX = canvas.width / 2.5,
+        ballonPositionY = 200;
+
+    var balloon = new HotAirBalloon(ballonPositionX, ballonPositionY, balloonSpeed);
+    balloon.draw(ctx);
+
+    //create a cloud
+    var cloudSpeed = 1,
+        cloudPositionX = canvas.width,
+        cloudPositionY = canvas.height/2;
+
+    var cloud = new Cloud(cloudPositionX, cloudPositionY, cloudSpeed);
+    cloud.draw(cloudsCtx);
+
+    animationFrame();
+
+    function animationFrame() {
+        //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //TODO Modify function clear on Cloud
+        // cloud.clear(cloudsCtx);
+
+        cloudsCtx.clearRect(0, 0, canvas.width, canvas.height);
 
         balloon.draw(ctx);
+        balloon.moveDown();
         
-    function HotAirBalloon(x, y, speed) {
-        this.x = x;
-        this.y = y;
-        this.speed = speed;
-        this.width = 30;
-        this.height = 30;
-
-        this.draw = function (ctx) {
-            // body of the balloon 
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.fillStyle = "brown";
-            ctx.strokeStyle = "darkbrown";
-            ctx.fill();
-            ctx.stroke();
-
-            // ropes
-            ctx.beginPath();
-            ctx.moveTo(this.x + 30,this.y);
-            ctx.lineTo(this.x + 40, this.y - 20);
-            ctx.moveTo(this.x,this.y);
-            ctx.lineTo(this.x - 10, this.y - 20);
-            ctx.stroke();
-
-            // balloon
-            ctx.beginPath();
-            ctx.moveTo(this.x - 10,this.y - 20);
-            ctx.lineTo(this.x + 40, this.y - 20);
-            ctx.lineTo(this.x + 60, this.y - 60);
-            ctx.lineTo(this.x - 30, this.y - 60);
-            ctx.lineTo(this.x - 10,this.y - 20);
-            ctx.arc(this.x + 15, this.y - 60, 45, 0, Math.PI,true);
-            ctx.fillStyle = "red";
-            ctx.strokeStyle = "red";
-            ctx.stroke();
-            ctx.fill();       
-        };
-
-        this.moveUp = function () {
-            this.y -= speed*15;
-        };
-
-        this.moveDown = function () {
-			this.y += speed;
-		};
-
+        cloud.draw(cloudsCtx);
+        cloud.move();
+        requestAnimationFrame(animationFrame);
     }
 
     document.body.addEventListener("keydown", function (e) {
-
-            balloon.moveUp();
-		
-	});
-
-    function animationFrame() {
-		ctx.clearRect(0, 0, 1024, 500);
-		balloon.draw(ctx);
-		balloon.moveDown();
-		requestAnimationFrame(animationFrame);
-	}
-
-	requestAnimationFrame(animationFrame);
-
-}());
+        //TODO CHECK BUTTON
+        balloon.moveUp();
+    });
+} ());

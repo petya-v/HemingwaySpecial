@@ -1,3 +1,14 @@
 canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
     border: 2px solid black;
+}
+
+canvas #balloon-canvas {
+    z-index: 3;
+}
+
+canvas #clouds-canvas {
+    z-index: 2;
 }
