@@ -14,7 +14,7 @@
     balloon.draw(ctx);
 
     //create a cloud
-    var cloudSpeed = 1,
+    var cloudSpeed = 5,
         cloudPositionX = canvas.width,
         cloudPositionY = canvas.height/2;
 
@@ -23,8 +23,12 @@
         seaPositionX = 0,
         seaPositionY = canvas.height;
 
-    var cloud = new Cloud(cloudPositionX, cloudPositionY, cloudSpeed);
-    cloud.draw(cloudsCtx);
+    cloudsCtx.height = canvas.height;
+    cloudsCtx.width = canvas.width;
+
+    var cloud = new Cloud(cloudPositionX, cloudPositionY, cloudSpeed, cloudsCtx);
+    cloud.newPosition();
+    cloud.draw();
 
     var sea = new Sea(seaPositionX, seaPositionY, seaSpeed);
     
@@ -48,6 +52,8 @@
         cloud.move();
         requestAnimationFrame(animationFrame);
     }
+
+
 
     document.body.addEventListener("keydown", function (e) {
         //TODO CHECK BUTTON
