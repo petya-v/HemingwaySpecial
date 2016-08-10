@@ -8,7 +8,7 @@ function PhysicsSettings(){
         frameRate : 1 / 30,                                 // seconds
         frameDelay : (1 /30) * 1000,                       // ms - frameRate * 100
         speedUp : 3,
-        reverseSpeedIndex : 150
+        reverseSpeedIndex : 170
     };
 }    
     

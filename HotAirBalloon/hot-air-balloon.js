@@ -5,7 +5,7 @@ function HotAirBalloon(x, y, speed, ctx) {
         this.width = 30;
         this.height = 30;
         this.velocity = 0;
-        this.mass = 0.5;
+        this.mass = 0.3;
         this.ctx = ctx;
         this.radius = 30;
         this.borderPoints = function() {

@@ -56,8 +56,8 @@
         balloon.velocity += ay * physics.frameRate;                         // Calculate velocity    
         balloon.y += balloon.velocity * physics.frameRate * 100;            // Calculate position
 
-        if (balloon.y <= 0 + 50) {                                          // Prevent balloon from overflowing canvas
-            balloon.y = 50 + 1;
+        if (balloon.y <= 0 + 60) {                                          // Prevent balloon from overflowing canvas
+            balloon.y = 60 + 1;
         }
         // =============================================================================
 
