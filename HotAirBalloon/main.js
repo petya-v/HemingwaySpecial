@@ -10,8 +10,8 @@
         ballonPositionX = canvas.width / 2.5,
         ballonPositionY = 200;
 
-    var balloon = new HotAirBalloon(ballonPositionX, ballonPositionY, balloonSpeed);
-    balloon.draw(ctx);
+    var balloon = new HotAirBalloon(ballonPositionX, ballonPositionY, balloonSpeed, ctx);
+    balloon.draw();
 
     //create a cloud
     var cloudSpeed = 5,

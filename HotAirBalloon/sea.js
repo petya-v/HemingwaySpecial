@@ -38,8 +38,8 @@ function Sea(x, y, speed, ctx) {
             ctx.lineTo(drawingX, 600);
             ctx.closePath();
             ctx.lineWidth = 1;
-            ctx.fillStyle = "#67C5C2";
-            ctx.strokeStyle = "#67C5C2";
+            ctx.fillStyle = "#0d8796";
+            ctx.strokeStyle = "#0d8796";
             ctx.stroke();
             ctx.fill();
         }
