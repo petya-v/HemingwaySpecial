@@ -37,7 +37,7 @@
         //TODO Modify function clear on Cloud
         // cloud.clear(cloudsCtx);
 
-        cloudsCtx.clearRect(0, 0, canvas.width, canvas.height);
+        //cloudsCtx.clearRect(0, 0, canvas.width, canvas.height);
 
         balloon.draw(ctx);
         balloon.moveDown();

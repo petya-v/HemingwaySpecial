@@ -3,23 +3,23 @@ function Sea(x, y, speed) {
         this.y = y;
         this.speed = speed;
 
-        this.draw = function () {
+        this.draw = function (ctx) {
 
-            seaCtx.beginPath();
-            seaCtx.moveTo(this.x, this.y);
-            seaCtx.lineTo(this.x, this.y - 20);
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(this.x, this.y - 20);
 
             for (var i = 0; i < 1024 / 100; i += 1) {
-                seaCtx.quadraticCurveTo(this.x + 50, this.y - 70, this.x + 100, this.y - 20);
+                ctx.quadraticCurveTo(this.x + 50, this.y - 70, this.x + 100, this.y - 20);
                 this.x = this.x + 100;
             }
 
-            seaCtx.lineTo(this.x, this.y);
-            seaCtx.lineWidth = 1;
-            seaCtx.fillStyle = "#67C5C2";
-            seaCtx.strokeStyle = "#67C5C2";
-            seaCtx.stroke();
-            seaCtx.fill();
+            ctx.lineTo(this.x, this.y);
+            ctx.lineWidth = 1;
+            ctx.fillStyle = "#67C5C2";
+            ctx.strokeStyle = "#67C5C2";
+            ctx.stroke();
+            ctx.fill();
         };
 
         this.move = function () {
