@@ -16,7 +16,7 @@
     //create a cloud
     var cloudSpeed = 5,
         cloudPositionX = canvas.width,
-        cloudPositionY = canvas.height/2;
+        cloudPositionY = canvas.height / 2;
 
     // create sea
     var seaSpeed = 1,
@@ -31,9 +31,8 @@
     cloud.draw();
 
     var sea = new Sea(seaPositionX, seaPositionY, seaSpeed, cloudsCtx);
-    
 
-    animationFrame();
+    var isAnimationOn = false;
 
     function animationFrame() {
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
@@ -43,15 +42,35 @@
 
         balloon.draw();
         balloon.moveDown();
+<<<<<<< HEAD
         
         cloud.draw(cloudsCtx);
         sea.draw();
         
+=======
+
+        cloud.draw(cloudsCtx);
+        sea.draw();
+
+>>>>>>> e14519343e02e3e4bb24c2fd5fee1cad839c2c05
         cloud.move();
         sea.move();
+        
+        if (isAnimationOn) {
+            requestAnimationFrame(animationFrame);
+        }
+    }
+
+    // Buttons
+    function onButtonPlayGameStart() {
+        isAnimationOn = true;
         requestAnimationFrame(animationFrame);
     }
 
+    function onButtonPauseGameStop() {
+        isAnimationOn = false;
+    }
+        
     function checkForCollision(ctx, arrWithPoint) {
         var imgData;
         var point;
@@ -71,7 +90,13 @@
     }
 
     document.body.addEventListener("keydown", function (e) {
-        //TODO CHECK BUTTON
-        balloon.moveUp();
+        if (e.keyCode === 38) {
+            balloon.moveUp();
+        }
     });
+
+    document.getElementById("btn-start")
+        .addEventListener("click", onButtonPlayGameStart);
+    document.getElementById("btn-pause")
+        .addEventListener("click", onButtonPauseGameStop);
 } ());
