@@ -10,11 +10,11 @@
         ballonPositionX = canvas.width / 2.5,
         ballonPositionY = 200;
 
-    var balloon = new HotAirBalloon(ballonPositionX, ballonPositionY, balloonSpeed);
-    balloon.draw(ctx);
+    var balloon = new HotAirBalloon(ballonPositionX, ballonPositionY, balloonSpeed, ctx);
+    balloon.draw();
 
     //create a cloud
-    var cloudSpeed = 1,
+    var cloudSpeed = 5,
         cloudPositionX = canvas.width,
         cloudPositionY = canvas.height / 2;
 
@@ -23,29 +23,32 @@
         seaPositionX = 0,
         seaPositionY = canvas.height;
 
-    var cloud = new Cloud(cloudPositionX, cloudPositionY, cloudSpeed);
-    cloud.draw(cloudsCtx);
+    cloudsCtx.height = canvas.height;
+    cloudsCtx.width = canvas.width;
 
-    var sea = new Sea(seaPositionX, seaPositionY, seaSpeed);
+    var cloud = new Cloud(cloudPositionX, cloudPositionY, cloudSpeed, cloudsCtx);
+    cloud.newPosition();
+    cloud.draw();
+
+    var sea = new Sea(seaPositionX, seaPositionY, seaSpeed, cloudsCtx);
 
     var isAnimationOn = false;
 
     function animationFrame() {
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        //TODO Modify function clear on Cloud
         cloud.clear(cloudsCtx);
+        sea.clear();
 
-        //cloudsCtx.clearRect(0, 0, canvas.width, canvas.height);
-
-        balloon.draw(ctx);
+        balloon.draw();
         balloon.moveDown();
 
         cloud.draw(cloudsCtx);
-        sea.draw(cloudsCtx);
+        sea.draw();
 
         cloud.move();
-
+        sea.move();
+        
         if (isAnimationOn) {
             requestAnimationFrame(animationFrame);
         }
@@ -59,6 +62,24 @@
 
     function onButtonPauseGameStop() {
         isAnimationOn = false;
+    }
+        
+    function checkForCollision(ctx, arrWithPoint) {
+        var imgData;
+        var point;
+        var data;
+
+        var currentIndex;
+        for (var i = 0, len1 = arrWithPoint.length; i < len1; i+=1) {
+            point = arrWithPoint[i];
+            imgData = ctx.getImageData( point.x, point.y, 1, 1);
+            data = imgData.data;
+
+            if(data[i] !== 0 || data[i + 1] !== 0 || data[i + 2] !== 0)
+                return false;
+        }
+
+        return true;
     }
 
     document.body.addEventListener("keydown", function (e) {

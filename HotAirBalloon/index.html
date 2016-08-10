@@ -1,26 +1,29 @@
 <html>
+
 <head>
 	<title>Hot Air Balloon</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-		<canvas id="balloon-canvas"
-			width="1024"
-			height="600">
-	</canvas>
-	<canvas id="clouds-canvas"
-			width="1024"
-			height="600">
-	</canvas>
-	<button type="button" id="btn-start"> 
+	<div id="container">
+		<button type="button" id="btn-start"> 
   		<img src="images/button-start-game.png" />
 	</button>
 	<button type="button" id="btn-pause"> 
   		<img src="images/button-continue.png" />
 	</button>
-	<script type="text/javascript" src="hot-air-balloon.js"></script>
-	<script type="text/javascript" src="cloud.js"></script>
-	<script type="text/javascript" src="sea.js"></script>
-	<script type="text/javascript" src="main.js"></script>
+		<svg id="background" , width="1024" height="600">
+			 <rect width="1024" height="600" style="fill:#CCFFE5;"" />
+		</svg>
+		<canvas id="balloon-canvas" width="1024" height="600">
+		</canvas>
+		<canvas id="clouds-canvas" width="1024" height="600">
+		</canvas>
+		<script type="text/javascript" src="hot-air-balloon.js"></script>
+		<script type="text/javascript" src="cloud.js"></script>
+		<script type="text/javascript" src="sea.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+	</div>
 </body>
+
 </html>

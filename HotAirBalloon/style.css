@@ -1,8 +1,18 @@
 canvas {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 10;
+    top: 10;
     border: 2px solid black;
+}
+
+svg {
+    position: absolute;
+    left: 10;
+    top: 10;
+}
+
+div #container {
+    position: relative;
 }
 
 canvas #balloon-canvas {
@@ -34,3 +44,4 @@ button {
 img {
     height: 70;
 }
+
