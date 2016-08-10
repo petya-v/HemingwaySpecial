@@ -1,14 +1,14 @@
 canvas {
     position: absolute;
-    left: 10;
-    top: 100;
+    left: 0;
+    top: 0;
     border: 2px solid black;
 }
 
 svg {
     position: absolute;
-    left: 10;
-    top: 100;
+    left: 0;
+    top: 0;
 }
 
 div #container {
@@ -39,11 +39,9 @@ h1{
 
 button {
     position: relative;
-}
-
-button {
     background-color:transparent; 
     border-color:transparent;
+    z-index: 10;
 }
 
 img {
