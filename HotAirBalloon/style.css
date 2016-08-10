@@ -12,3 +12,25 @@ canvas #balloon-canvas {
 canvas #clouds-canvas {
     z-index: 2;
 }
+
+h1{
+    font-family: "Goudy Style", Garamond, "Big Caslon", "Times New Roman", serif;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+button {
+    position: relative;
+}
+
+button {
+    background-color:transparent; 
+    border-color:transparent;
+}
+
+img {
+    height: 70;
+}
