@@ -34,6 +34,8 @@
     sea.draw();
 
     createBackgroundSVG();
+    
+    animationFrame();
 
     var isAnimationOn = false;
 
@@ -45,6 +47,19 @@
 
         balloon.draw();
         balloon.moveDown();
+
+        cloud.draw();
+        sea.draw(cloudsCtx);
+        
+        cloud.move();
+        sea.move();
+
+        var collision = isInColision(cloudsCtx, balloon.borderPoints());
+        console.log(collision);
+        requestAnimationFrame(animationFrame);
+    }
+
+    function isInColision(ctx, arrWithPoint) {
 
         cloud.draw(cloudsCtx);
         sea.draw();
@@ -70,18 +85,17 @@
         var imgData;
         var point;
         var data;
-
-        var currentIndex;
-        for (var i = 0, len1 = arrWithPoint.length; i < len1; i+=1) {
+        
+        for (var i = 0, len = arrWithPoint.length; i < len; i+=1) {
             point = arrWithPoint[i];
             imgData = ctx.getImageData( point.x, point.y, 1, 1);
             data = imgData.data;
 
-            if(data[i] !== 0 || data[i + 1] !== 0 || data[i + 2] !== 0)
-                return false;
+            if(data[0] !== 0 || data[1] !== 0 || data[2] !== 0) 
+                return true;
         }
 
-        return true;
+        return false;
     }
 
     document.body.addEventListener("keydown", function (e) {
