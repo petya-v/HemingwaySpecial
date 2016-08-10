@@ -46,7 +46,7 @@ function Cloud(x, y, speed, ctx) {
 
       this.newPosition = function ()
       {
-            var waterHeight = 0;
+            var waterHeight = 50;
             var maxYPosition = ctx.height - waterHeight - this.height;
 
             this.y = Math.floor((Math.random() * maxYPosition) + 1);

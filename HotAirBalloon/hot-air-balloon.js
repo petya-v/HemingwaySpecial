@@ -1,11 +1,12 @@
-function HotAirBalloon(x, y, speed) {
+function HotAirBalloon(x, y, speed, ctx) {
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.width = 30;
         this.height = 30;
+        this.ctx = ctx;
 
-        this.draw = function (ctx) {
+        this.draw = function () {
             // body of the balloon 
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.fillStyle = "brown";
