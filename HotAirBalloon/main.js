@@ -44,12 +44,8 @@
         balloon.draw();
         balloon.moveDown();
         
-<<<<<<< HEAD
-
-=======
         cloud.draw(cloudsCtx);
         sea.draw();
->>>>>>> 8b7bc36765fa06b8423098ba8c505815e05fb456
         
         cloud.move();
         sea.move();

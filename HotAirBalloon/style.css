@@ -1,18 +1,19 @@
 canvas {
     position: absolute;
     left: 10;
-    top: 10;
+    top: 100;
     border: 2px solid black;
 }
 
 svg {
     position: absolute;
     left: 10;
-    top: 10;
+    top: 100;
 }
 
 div #container {
     position: relative;
+    background-color: black;
 }
 
 canvas #balloon-canvas {
@@ -21,5 +22,9 @@ canvas #balloon-canvas {
 
 canvas #clouds-canvas {
     z-index: 2;
+}
+
+body {
+    background-color: rgb(239, 228, 176);
 }
 
