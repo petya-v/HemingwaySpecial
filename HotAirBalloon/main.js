@@ -31,8 +31,14 @@
     cloud.draw();
 
     var sea = new Sea(seaPositionX, seaPositionY, seaSpeed, cloudsCtx);
+    sea.draw();
+
+    createBackgroundSVG();
+    
+    animationFrame();
 
     var isAnimationOn = false;
+
 
     function animationFrame() {
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
@@ -49,6 +55,8 @@
         sea.move();
         
         if (isAnimationOn) {
+            var collision = isInColision(cloudsCtx, balloon.borderPoints());
+            console.log(collision);
             requestAnimationFrame(animationFrame);
         }
     }
@@ -63,22 +71,21 @@
         isAnimationOn = false;
     }
         
-    function checkForCollision(ctx, arrWithPoint) {
+    function isInColision(ctx, arrWithPoint) {
         var imgData;
         var point;
         var data;
-
-        var currentIndex;
-        for (var i = 0, len1 = arrWithPoint.length; i < len1; i+=1) {
+        
+        for (var i = 0, len = arrWithPoint.length; i < len; i+=1) {
             point = arrWithPoint[i];
             imgData = ctx.getImageData( point.x, point.y, 1, 1);
             data = imgData.data;
 
-            if(data[i] !== 0 || data[i + 1] !== 0 || data[i + 2] !== 0)
-                return false;
+            if(data[0] !== 0 || data[1] !== 0 || data[2] !== 0) 
+                return true;
         }
 
-        return true;
+        return false;
     }
 
     document.body.addEventListener("keydown", function (e) {
