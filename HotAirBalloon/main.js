@@ -18,8 +18,16 @@
         cloudPositionX = canvas.width,
         cloudPositionY = canvas.height/2;
 
+    // create sea
+    var seaSpeed = 1,
+        seaPositionX = 0,
+        seaPositionY = canvas.height;
+
     var cloud = new Cloud(cloudPositionX, cloudPositionY, cloudSpeed);
     cloud.draw(cloudsCtx);
+
+    var sea = new Sea(seaPositionX, seaPositionY, seaSpeed);
+    sea.draw(cloudsCtx);
 
     animationFrame();
 
