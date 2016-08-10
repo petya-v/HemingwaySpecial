@@ -31,10 +31,12 @@
     cloud.draw();
 
     var sea = new Sea(seaPositionX, seaPositionY, seaSpeed, cloudsCtx);
+
     
     animationFrame();
 
     var isAnimationOn = false;
+
 
     function animationFrame() {
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
@@ -45,25 +47,14 @@
         balloon.draw();
         balloon.moveDown();
 
-        cloud.draw();
-        sea.draw(cloudsCtx);
-        
-        cloud.move();
-        sea.move();
-
-        var collision = isInColision(cloudsCtx, balloon.borderPoints());
-        console.log(collision);
-        requestAnimationFrame(animationFrame);
-    }
-
-    function isInColision(ctx, arrWithPoint) {
-
         cloud.draw(cloudsCtx);
         sea.draw();
         cloud.move();
         sea.move();
         
         if (isAnimationOn) {
+            var collision = isInColision(cloudsCtx, balloon.borderPoints());
+            console.log(collision);
             requestAnimationFrame(animationFrame);
         }
     }
@@ -78,7 +69,7 @@
         isAnimationOn = false;
     }
         
-    function checkForCollision(ctx, arrWithPoint) {
+    function isInColision(ctx, arrWithPoint) {
         var imgData;
         var point;
         var data;
