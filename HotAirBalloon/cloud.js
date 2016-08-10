@@ -1,13 +1,15 @@
-function Cloud(x, y, speed) {
+function Cloud(x, y, speed, ctx) {
       this.x = x;
       this.y = y;
       this.speed = speed;
       this.width = 300;
-      this.height = 175;
+      // this.height = 175;
+      this.height = 170;
       this.clearX = this.x - 40;
       this.clearY = this.y - 75;
+      this.ctx = ctx;
 
-      this.draw = function (ctx) {
+      this.draw = function () {
             ctx.beginPath();
             ctx.moveTo(this.x, this.y);
             ctx.bezierCurveTo(this.x - 40, this.y + 20, this.x - 40, this.y + 70, this.x + 60, this.y + 70);
@@ -26,12 +28,22 @@ function Cloud(x, y, speed) {
             ctx.stroke();
       };
 
-      this.clear = function(ctx){
+      this.clear = function(){
             ctx.clearRect(this.clearX, this.clearY, this.width, this.height); 
+            // ctx.clearRect(this.x - 40, this.y - 75, this.width, this.height); 
       };
 
       this.move = function (){
             this.x -= this.speed;
             this.clearX -= this.speed;
-      };      
+      };   
+
+      this.newPosition = function ()
+      {
+            var waterHeight = 0;
+            var maxYPosition = ctx.height - waterHeight - this.height;
+            console.log(maxYPosition);
+
+            this.y = Math.floor((Math.random() * maxYPosition) + 1);
+      };
 }
