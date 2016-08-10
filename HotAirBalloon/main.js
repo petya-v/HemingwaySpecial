@@ -41,18 +41,38 @@
         cloud.clear(cloudsCtx);
         sea.clear();
 
-        balloon.draw(ctx);
+        balloon.draw();
         balloon.moveDown();
         
+<<<<<<< HEAD
+
+=======
         cloud.draw(cloudsCtx);
         sea.draw();
+>>>>>>> 8b7bc36765fa06b8423098ba8c505815e05fb456
         
         cloud.move();
         sea.move();
         requestAnimationFrame(animationFrame);
     }
 
+    function checkForCollision(ctx, arrWithPoint) {
+        var imgData;
+        var point;
+        var data;
 
+        var currentIndex;
+        for (var i = 0, len1 = arrWithPoint.length; i < len1; i+=1) {
+            point = arrWithPoint[i];
+            imgData = ctx.getImageData( point.x, point.y, 1, 1);
+            data = imgData.data;
+
+            if(data[i] !== 0 || data[i + 1] !== 0 || data[i + 2] !== 0)
+                return false;
+        }
+
+        return true;
+    }
 
     document.body.addEventListener("keydown", function (e) {
         //TODO CHECK BUTTON

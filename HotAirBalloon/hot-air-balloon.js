@@ -4,7 +4,7 @@ function HotAirBalloon(x, y, speed, ctx) {
         this.speed = speed;
         this.width = 30;
         this.height = 30;
-         this.ctx = ctx;
+        this.ctx = ctx;
 
         this.draw = function () {
             // body of the balloon 
