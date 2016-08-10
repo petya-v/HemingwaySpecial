@@ -1,14 +1,14 @@
 canvas {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 100;
     border: 2px solid black;
 }
 
 svg {
     position: absolute;
     left: 0;
-    top: 0;
+    top: 100;
 }
 
 div #container {
@@ -25,16 +25,15 @@ canvas #clouds-canvas {
 }
 
 body {
-    background-color: rgb(239, 228, 176);
+    /*background-color: rgb(239, 228, 176);*/
+    background: url('images/paper.png');
+    background-repeat: repeat;
 }
 
-h1{
-    font-family: "Goudy Style", Garamond, "Big Caslon", "Times New Roman", serif;
-	font-size: 24px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: bold;
-	line-height: 30px;
+#heading{
+   display: block;
+    margin: auto;
+   
 }
 
 button {
