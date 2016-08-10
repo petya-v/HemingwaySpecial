@@ -1,13 +1,8 @@
 (function () {
-    // PHYSICS
-    let Cd = 0.5;                                           // drag coefficient of sphere is ~ 0.5
-    let rho = 1.29;                                         // density of air in kg / m^3
-    let A = Math.PI * 30 * 30 / (10000);                    // reference area in m^2
-    let ag = 9.81;                                          // earth gravity in m / s^2
-    let frameRate = 1 / 40;                                 // seconds
-    let frameDelay = frameRate * 1000;                      // ms
-    let speedUp = 4;
-    let reverseSpeedIndex = 200;
+
+    // ============ SET PHYSICS RULES ============
+    let physics = PhysicsSettings();
+    // ===========================================
 
 
 
@@ -46,7 +41,7 @@
     sea.draw();
 
     createBackgroundSVG();
-    
+
     animationFrame();
 
     var isAnimationOn = false;
@@ -54,13 +49,17 @@
 
     function animationFrame() {
 
-        // ===================== FLUENT MOVEMENT ===========================
-        let Fy = -0.5 * Cd * A * rho * balloon.velocity * balloon.velocity * balloon.velocity / Math.abs(balloon.velocity); 
-        Fy = (isNaN(Fy) ? 0 : Fy);                                  // Drag force: Fd = -1/2 * Cd * A * rho * v * v  
-        let ay = ag + (Fy / balloon.mass);                          // Calculate acceleration ( F = ma )    
-        balloon.velocity += ay * frameRate;                         // Calculate velocity    
-        balloon.y += balloon.velocity * frameRate * 100;            // Calculate position
-        // ==================================================================
+        // ===================== FLUENT MOVEMENT OF BALLOON ===========================
+        let Fy = -0.5 * physics.Cd * physics.A * physics.rho * balloon.velocity * balloon.velocity * balloon.velocity / Math.abs(balloon.velocity);
+        Fy = (isNaN(Fy) ? 0 : Fy);                                          // Drag force: Fd = -1/2 * Cd * A * rho * v * v  
+        let ay = physics.ag + (Fy / balloon.mass);                          // Calculate acceleration ( F = ma )    
+        balloon.velocity += ay * physics.frameRate;                         // Calculate velocity    
+        balloon.y += balloon.velocity * physics.frameRate * 100;            // Calculate position
+
+        if (balloon.y <= 0 + 50) {                                          // Prevent balloon from overflowing canvas
+            balloon.y = 50 + 1;
+        }
+        // =============================================================================
 
 
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
@@ -75,7 +74,7 @@
         sea.draw();
         cloud.move();
         sea.move();
-        
+
         if (isAnimationOn) {
             let collision = isInColision(cloudsCtx, balloon.borderPoints());
             console.log(collision);
@@ -92,18 +91,18 @@
     function onButtonPauseGameStop() {
         isAnimationOn = false;
     }
-        
+
     function isInColision(ctx, arrWithPoint) {
         let imgData;
         let point;
         let data;
-        
-        for (let i = 0, len = arrWithPoint.length; i < len; i+=1) {
+
+        for (let i = 0, len = arrWithPoint.length; i < len; i += 1) {
             point = arrWithPoint[i];
-            imgData = ctx.getImageData( point.x, point.y, 1, 1);
+            imgData = ctx.getImageData(point.x, point.y, 1, 1);
             data = imgData.data;
 
-            if(data[0] !== 0 || data[1] !== 0 || data[2] !== 0) 
+            if (data[0] !== 0 || data[1] !== 0 || data[2] !== 0)
                 return true;
         }
 
@@ -112,7 +111,7 @@
 
     document.body.addEventListener("keydown", function (e) {
         if (e.keyCode === 38) {
-            balloon.moveUp(reverseSpeedIndex, speedUp);
+            balloon.moveUp(physics.reverseSpeedIndex, physics.speedUp);
         }
     });
 
