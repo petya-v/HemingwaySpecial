@@ -4,7 +4,10 @@ function HotAirBalloon(x, y, speed, ctx) {
         this.speed = speed;
         this.width = 30;
         this.height = 30;
+        this.velocity = 0;
+        this.mass = 0.5;
         this.ctx = ctx;
+        this.radius = 30;
         this.borderPoints = function() {
             var borderPoints = [];
             
@@ -69,8 +72,8 @@ function HotAirBalloon(x, y, speed, ctx) {
         };
 
 
-        this.moveUp = function () {
-            this.y -= speed*15;
+        this.moveUp = function (reverseSpeedIndex, speedUp) {
+            this.velocity = (-(this.y) / reverseSpeedIndex) - speedUp;
         };
 
         this.moveDown = function () {
