@@ -27,7 +27,7 @@
     cloud.draw(cloudsCtx);
 
     var sea = new Sea(seaPositionX, seaPositionY, seaSpeed);
-    sea.draw(cloudsCtx);
+    
 
     animationFrame();
 
@@ -35,7 +35,7 @@
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         //TODO Modify function clear on Cloud
-        // cloud.clear(cloudsCtx);
+        cloud.clear(cloudsCtx);
 
         //cloudsCtx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -43,6 +43,8 @@
         balloon.moveDown();
         
         cloud.draw(cloudsCtx);
+        sea.draw(cloudsCtx);
+        
         cloud.move();
         requestAnimationFrame(animationFrame);
     }

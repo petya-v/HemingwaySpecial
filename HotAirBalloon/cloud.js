@@ -32,5 +32,6 @@ function Cloud(x, y, speed) {
 
       this.move = function (){
             this.x -= this.speed;
+            this.clearX -= this.speed;
       };      
 }
