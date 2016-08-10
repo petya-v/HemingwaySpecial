@@ -31,6 +31,9 @@
     cloud.draw();
 
     var sea = new Sea(seaPositionX, seaPositionY, seaSpeed, cloudsCtx);
+    sea.draw();
+
+    createBackgroundSVG();
 
     var isAnimationOn = false;
 
