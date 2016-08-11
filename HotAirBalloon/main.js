@@ -101,6 +101,7 @@
             if (collision) {
                 isStop = true;
                 isAnimationOn = false;
+                text();
             }
             else {
                 requestAnimationFrame(animationFrame);
