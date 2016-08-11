@@ -13,7 +13,8 @@
         seaPositionY,
         cloud,
         sea,
-        isAnimationOn;
+        isAnimationOn,
+        isStop;
 
     physics = PhysicsSettings();
 
@@ -52,6 +53,7 @@
     createBackgroundSVG();
 
     isAnimationOn = false;
+    isStop = false;
 
     document.body.addEventListener("keydown", function (e) {
         if (e.keyCode === 38) {
@@ -61,7 +63,7 @@
 
     document.getElementById("btn-start")
         .addEventListener("click", onButtonPlayGameStart);
-        
+
     document.getElementById("btn-pause")
         .addEventListener("click", onButtonPauseGameStop);
 
@@ -95,14 +97,20 @@
 
         if (isAnimationOn) {
             collision = isInColision(cloudsCtx, balloon.borderPoints());
-            console.log(collision);
-            requestAnimationFrame(animationFrame);
+            if (collision) {
+                isAnimationOn = false;
+                isStop = true;
+            }
+            else {
+                requestAnimationFrame(animationFrame);
+
+            }
         }
     }
 
     // Buttons
     function onButtonPlayGameStart() {
-        if (!isAnimationOn) {
+        if (!isAnimationOn && !isStop) {
             isAnimationOn = true;
             requestAnimationFrame(animationFrame);
         }
