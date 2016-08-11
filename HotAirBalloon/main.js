@@ -14,7 +14,11 @@
         cloud,
         sea,
         isAnimationOn,
-        isStop;
+        isStop,
+        clouds,
+        cloud,
+        frameCountsForGenerateClouds,
+        intervalForCreateClouds;
 
     physics = PhysicsSettings();
 
@@ -27,6 +31,7 @@
     cloudsCtx.width = canvas.width;
 
     //create The balloon
+
     ballonPositionX = canvas.width / 3;
     ballonPositionY = 200;
 
@@ -37,10 +42,11 @@
     cloudSpeed = 5;
     cloudPositionX = canvas.width;
     cloudPositionY = canvas.height / 2;
+    clouds = [];
 
     cloud = new Cloud(cloudPositionX, cloudPositionY, cloudSpeed, cloudsCtx);
-    cloud.newPosition();
     cloud.draw();
+    clouds.push(cloud);
 
     // create sea
     seaSpeed = 1;
@@ -68,10 +74,14 @@
         .addEventListener("click", onButtonPauseGameStop);
 
 
+    frameCountsForGenerateClouds = 0;
+    intervalForCreateClouds = 100;
     function animationFrame() {
         var Fy,
             ay,
-            collision;
+            collision,
+            i,
+            currCloud;
         // ===================== FLUENT MOVEMENT OF BALLOON ===========================
         Fy = -0.5 * physics.Cd * physics.A * physics.rho * balloon.velocity * balloon.velocity * balloon.velocity / Math.abs(balloon.velocity);
         Fy = (isNaN(Fy) ? 0 : Fy);                                          // Drag force: Fd = -1/2 * Cd * A * rho * v * v  
@@ -86,15 +96,36 @@
 
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        cloud.clear();
         sea.clear();
+        cloud.clear();
+
 
         balloon.draw();
-        cloud.draw();
-        sea.draw();
-        cloud.move();
-        sea.move();
 
+        
+
+        if (frameCountsForGenerateClouds >= intervalForCreateClouds) {
+            addCloud(clouds, cloudsCtx);
+            frameCountsForGenerateClouds = 0;
+        }
+
+
+        for (i = 0; i < clouds.length; i += 1) {
+            currCloud = clouds[i];
+            currCloud.clear();
+
+            if (currCloud.x + currCloud.width > 0) {
+                currCloud.draw();
+                currCloud.move();
+            }
+            else {
+                clouds.splice(i, 1);
+                i -= 1;
+            }
+        }
+
+        sea.draw();
+        sea.move();
 
         if (isAnimationOn) {
             collision = isInColision(cloudsCtx, balloon.borderPoints());
@@ -103,6 +134,7 @@
                 isAnimationOn = false;
             }
             else {
+                frameCountsForGenerateClouds += 1;
                 requestAnimationFrame(animationFrame);
             }
         }
@@ -137,5 +169,16 @@
         }
 
         return false;
+    }
+
+    function addCloud(clouds, cloudsCtx) {
+        var possibleY = [1, 50, 250, 700],
+            randomY = possibleY[Math.floor((Math.random() * 3) + 1)],
+            cloudSpeed = 5,
+            cloud;
+
+        cloudSpeed = 5;
+        cloud = new Cloud(canvas.width, randomY, cloudSpeed, cloudsCtx);
+        clouds.push(cloud);
     }
 } ());
