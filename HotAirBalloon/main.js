@@ -17,7 +17,8 @@
         isStop,
         clouds,
         frameCountsForGenerateClouds,
-        intervalForCreateClouds;
+        intervalForCreateClouds,
+        score = 0;
 
     physics = PhysicsSettings();
 
@@ -99,13 +100,20 @@
 
         balloon.draw();
 
+        
+
         if (frameCountsForGenerateClouds >= intervalForCreateClouds) {
             addCloud(clouds, cloudsCtx);
+            
+            // add score
+            document.getElementById("score-number").innerHTML = score;
+            score += 1;
+
             frameCountsForGenerateClouds = 0;
         }
 
         for (i = 0; i < clouds.length; i += 1) {
-            debugger;
+            //debugger;
             currCloud = clouds[i];
             currCloud.clear();
 
