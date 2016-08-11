@@ -43,9 +43,7 @@
     cloudPositionY = canvas.height / 2;
     clouds = [];
 
-    cloud = new Cloud(cloudPositionX, cloudPositionY, cloudSpeed, cloudsCtx);
-    cloud.draw();
-    clouds.push(cloud);
+    addCloud(clouds, cloudsCtx);
 
     // create sea
     seaSpeed = 1;
@@ -96,20 +94,17 @@
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         sea.clear();
-        cloud.clear();
-
+        // cloud.clear();
 
         balloon.draw();
-
-        
 
         if (frameCountsForGenerateClouds >= intervalForCreateClouds) {
             addCloud(clouds, cloudsCtx);
             frameCountsForGenerateClouds = 0;
         }
 
-
         for (i = 0; i < clouds.length; i += 1) {
+            debugger;
             currCloud = clouds[i];
             currCloud.clear();
 
@@ -172,7 +167,7 @@
     }
 
     function addCloud(clouds, cloudsCtx) {
-        var possibleY = [1, 50, 250, 700],
+        var possibleY = [1, 30, 150, 400],
             randomY = possibleY[Math.floor((Math.random() * 3) + 1)],
             cloudSpeed = 5,
             cloud;
