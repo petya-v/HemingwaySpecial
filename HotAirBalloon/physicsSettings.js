@@ -7,8 +7,8 @@ function PhysicsSettings(){
         ag : 2,                                             // gravity in m / s^2
         frameRate : 1 / 30,                                 // seconds
         frameDelay : (1 / 30) * 1000,                       // ms => frameRate * 100
-        speedUp : 3,
-        reverseSpeedIndex : 200
+        speedUp : 1,
+        reverseSpeedIndex : 150
     };
 }    
     
