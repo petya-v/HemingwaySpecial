@@ -4,13 +4,10 @@ canvas {
     top: 100;
     border-top: 5px dotted black;
 	border-bottom: 5px dotted black;
-    border-left: 5px dotted black;
-    border-right: 5px dotted black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
 	box-shadow: inset 0 -1px 0 0 black, inset 0 1px 0 0 black, 0 1px 0 0 black, 0 -1px 0 0 black;
 	margin-bottom: 1px;
-    /*margin-top: 1px;
-    margin-right: 1px;
-    margin-left: 1px;*/
 }
 
 svg {
