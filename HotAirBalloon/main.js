@@ -16,7 +16,6 @@
         isAnimationOn,
         isStop,
         clouds,
-        cloud,
         frameCountsForGenerateClouds,
         intervalForCreateClouds;
 
