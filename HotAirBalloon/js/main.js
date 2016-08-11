@@ -183,11 +183,13 @@
     function addCloud(clouds, cloudsCtx) {
         var possibleY = [1, 30, 150, 400],
             randomY = possibleY[Math.floor((Math.random() * 3) + 1)],
+            randomYv2 = Math.floor(Math.random() * (canvas.height - 220)),
             cloudSpeed = 5,
             cloud;
 
         cloudSpeed = 5;
-        cloud = new Cloud(canvas.width, randomY, cloudSpeed, cloudsCtx);
+        // cloud = new Cloud(canvas.width, randomY, cloudSpeed, cloudsCtx);
+        cloud = new Cloud(canvas.width, randomYv2, cloudSpeed, cloudsCtx);
         clouds.push(cloud);
     }
 } ());
