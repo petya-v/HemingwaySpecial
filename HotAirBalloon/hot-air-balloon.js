@@ -2,7 +2,6 @@ var height = 30;
 var width = 30;
 var velocity = 0;
 var mass = 0.2;
-var radius = 30;
 
 function HotAirBalloon(x, y, ctx) {
         this.x = x;
@@ -12,7 +11,6 @@ function HotAirBalloon(x, y, ctx) {
         this.velocity = velocity;
         this.mass = mass;
         this.ctx = ctx;
-        this.radius = radius;
         
         this.borderPoints = function() {
             var borderPoints = [];
