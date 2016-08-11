@@ -29,7 +29,6 @@ function HotAirBalloon(x, y, ctx) {
         p6 = { x: this.x - 10, y: this.y - 20 };
         p7 = { x: this.x + 60, y: this.y - 60 };
         p8 = { x: this.x - 30, y: this.y - 60 };
-
         p9 = { x: this.x, y: this.y - 105 };
         p10 = { x: this.x + this.width, y: this.y - 105 };
         p11 = { x: this.x + this.width / 2, y: this.y - 105 };
@@ -49,6 +48,7 @@ function HotAirBalloon(x, y, ctx) {
         borderPoints.push(p11);
         borderPoints.push(p12);
         borderPoints.push(p13);
+
         return borderPoints;
     };
 

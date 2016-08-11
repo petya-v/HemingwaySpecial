@@ -95,15 +95,15 @@
         cloud.move();
         sea.move();
 
+
         if (isAnimationOn) {
             collision = isInColision(cloudsCtx, balloon.borderPoints());
             if (collision) {
-                isAnimationOn = false;
                 isStop = true;
+                isAnimationOn = false;
             }
             else {
                 requestAnimationFrame(animationFrame);
-
             }
         }
     }
