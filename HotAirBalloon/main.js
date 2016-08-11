@@ -132,6 +132,7 @@
             if (collision) {
                 isStop = true;
                 isAnimationOn = false;
+                text();
             }
             else {
                 frameCountsForGenerateClouds += 1;
