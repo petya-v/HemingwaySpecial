@@ -54,12 +54,35 @@ function HotAirBalloon(x, y, ctx) {
 
     this.draw = function () {
         var balloonPattern;
+        // hot-air
+        this.ctx.rect((this.x + this.width / 2 - 2.5), this.y - 15, 5, 5);
+        this.ctx.fillStyle = "black";
+        this.ctx.fill();
+        this.ctx.closePath();
+
+        // this.ctx.beginPath();
+        // this.ctx.rect((this.x + this.width / 2 - 2), this.y - 6);
+        // this.ctx.lineTo((this.x + this.width / 2 - 2), this.y-10);
+        // this.ctx.strokeStyle = "orange";
+        // this.ctx.stroke();
+        // this.ctx.closePath();
+
+        //pilot
+        this.ctx.beginPath();
+        this.ctx.arc(this.x + 7, this.y - 5, 3, 0, 2 * Math.PI);
+        this.ctx.fillStyle = "pink";
+        this.ctx.fill();
+        this.ctx.closePath();
+
         // body of the balloon 
+        this.ctx.beginPath();
         this.ctx.rect(this.x, this.y, this.width, this.height);
         this.ctx.fillStyle = "brown";
         this.ctx.strokeStyle = "darkbrown";
         this.ctx.fill();
         this.ctx.stroke();
+
+
 
         // ropes
         this.ctx.beginPath();
@@ -70,7 +93,7 @@ function HotAirBalloon(x, y, ctx) {
         this.ctx.stroke();
 
         balloonPattern = this.ctx.createPattern(this.img, 'repeat');
-        
+
         // balloon
         this.ctx.beginPath();
         this.ctx.moveTo(this.x - 10, this.y - 20);
@@ -83,6 +106,10 @@ function HotAirBalloon(x, y, ctx) {
         this.ctx.strokeStyle = "red";
         this.ctx.stroke();
         this.ctx.fill();
+    };
+
+    this.drawFire = function () {
+        
     };
 
 
