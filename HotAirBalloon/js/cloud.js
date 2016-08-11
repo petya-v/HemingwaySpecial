@@ -4,9 +4,7 @@ function Cloud(x, y, speed, ctx) {
       this.speed = speed;
       this.volumeMultiplier = 0.75;
       this.width = 300 * this.volumeMultiplier;
-      this.height = 170 * this.volumeMultiplier;
-      this.clearX = this.x;
-      this.clearY = this.y;
+      this.height = 175 * this.volumeMultiplier;
       this.ctx = ctx;
 
       this.draw = function () {
