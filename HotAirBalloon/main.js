@@ -2,7 +2,6 @@
     var physics,
         canvas,
         cloudsCanvas,
-        balloonSpeed,
         ballonPositionX,
         ballonPositionY,
         balloon,
@@ -27,11 +26,10 @@
     cloudsCtx.width = canvas.width;
 
     //create The balloon
-    balloonSpeed = 1;
-    ballonPositionX = canvas.width / 2.5;
+    ballonPositionX = canvas.width / 3;
     ballonPositionY = 200;
 
-    balloon = new HotAirBalloon(ballonPositionX, ballonPositionY, balloonSpeed, ctx);
+    balloon = new HotAirBalloon(ballonPositionX, ballonPositionY, ctx);
     balloon.draw();
 
     //create a cloud
@@ -75,7 +73,7 @@
         // ===================== FLUENT MOVEMENT OF BALLOON ===========================
         Fy = -0.5 * physics.Cd * physics.A * physics.rho * balloon.velocity * balloon.velocity * balloon.velocity / Math.abs(balloon.velocity);
         Fy = (isNaN(Fy) ? 0 : Fy);                                          // Drag force: Fd = -1/2 * Cd * A * rho * v * v  
-        ay = physics.ag + (Fy / balloon.mass);                          // Calculate acceleration ( F = ma )    
+        ay = physics.ag + (Fy / balloon.mass);                              // Calculate acceleration ( F = ma )    
         balloon.velocity += ay * physics.frameRate;                         // Calculate velocity    
         balloon.y += balloon.velocity * physics.frameRate * 100;            // Calculate position
 
@@ -90,8 +88,6 @@
         sea.clear();
 
         balloon.draw();
-        balloon.moveDown();
-
         cloud.draw();
         sea.draw();
         cloud.move();
