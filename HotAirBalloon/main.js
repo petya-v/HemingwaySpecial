@@ -150,6 +150,11 @@
             isAnimationOn = true;
             requestAnimationFrame(animationFrame);
         }
+
+        // when GameOver, click startGame button to refresh page and start again
+        if(isStop){
+            location.reload(true);
+        }
     }
 
     function onButtonPauseGameStop() {
