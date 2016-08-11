@@ -1,7 +1,7 @@
 var height = 30;
 var width = 30;
 var velocity = 0;
-var mass = 0.2;
+var mass = 0.1;
 
 function HotAirBalloon(x, y, ctx) {
     this.x = x;
