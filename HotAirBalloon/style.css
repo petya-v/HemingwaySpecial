@@ -43,7 +43,8 @@ body {
 button {
     position: absolute;
     background-color:transparent;
-    border-color:transparent;
+    
+    border: none;
     z-index: 10;
 }
 
@@ -61,14 +62,15 @@ button {
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 0;
+    margin-top: 30px;
+    right: 250px;
 
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
 }
 
-#btn-start:hover .tooltiptext{
+#btn-start:hover + .tooltiptext{
     visibility: visible;
 }
 
@@ -91,6 +93,7 @@ button {
 .btn-img {
     height: 150;
     width: 200;
+    border: none;
 }
 
 #score-number{
