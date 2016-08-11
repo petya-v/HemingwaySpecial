@@ -96,7 +96,7 @@
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         sea.clear();
-        // cloud.clear();
+        //cloud.clear();
 
         balloon.draw();
 
@@ -153,7 +153,8 @@
 
         // when GameOver, click startGame button to refresh page and start again
         if(isStop){
-            location.reload(true);
+            // location.reload(true); => not working properly on Mozilla
+            window.location.href = window.location.href;
         }
     }
 
