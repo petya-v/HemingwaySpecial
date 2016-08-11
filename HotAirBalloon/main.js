@@ -149,6 +149,10 @@
             isAnimationOn = true;
             requestAnimationFrame(animationFrame);
         }
+
+        if(isStop){
+            location.reload(true);
+        }
     }
 
     function onButtonPauseGameStop() {
