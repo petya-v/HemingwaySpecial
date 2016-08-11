@@ -53,6 +53,25 @@ button {
     width: 300px;
 }
 
+.tooltiptext{
+    visibility: hidden;
+    width: 200px;
+    background-color: grey;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+#btn-start:hover .tooltiptext{
+    visibility: visible;
+}
+
 #btn-pause{
     right: 10px;
     top: 250px;
@@ -80,5 +99,4 @@ button {
     position: absolute;
     right: 140px;
 }
-
 
