@@ -55,18 +55,13 @@ function HotAirBalloon(x, y, ctx) {
     this.draw = function () {
         var balloonPattern;
         // hot-air
-        this.ctx.rect((this.x + this.width / 2 - 2.5), this.y - 15, 5, 5);
+        this.ctx.rect((this.x + this.width / 2 - 3), this.y - 10, 7, 5);
         this.ctx.fillStyle = "black";
         this.ctx.fill();
         this.ctx.closePath();
 
-        // this.ctx.beginPath();
-        // this.ctx.rect((this.x + this.width / 2 - 2), this.y - 6);
-        // this.ctx.lineTo((this.x + this.width / 2 - 2), this.y-10);
-        // this.ctx.strokeStyle = "orange";
-        // this.ctx.stroke();
-        // this.ctx.closePath();
-
+        this.drawFire();
+        
         //pilot
         this.ctx.beginPath();
         this.ctx.arc(this.x + 7, this.y - 5, 3, 0, 2 * Math.PI);
@@ -109,7 +104,11 @@ function HotAirBalloon(x, y, ctx) {
     };
 
     this.drawFire = function () {
-        
+        this.ctx.beginPath();
+        this.ctx.rect((this.x + this.width / 2 - 2), this.y - 17, 5, 7);
+        this.ctx.fillStyle = "orange";
+        this.ctx.fill();
+        this.ctx.closePath();
     };
 
 
