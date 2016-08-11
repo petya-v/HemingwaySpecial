@@ -64,13 +64,13 @@
 
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        cloud.clear(cloudsCtx);
+        cloud.clear();
         sea.clear();
 
         balloon.draw();
         balloon.moveDown();
 
-        cloud.draw(cloudsCtx);
+        cloud.draw();
         sea.draw();
         cloud.move();
         sea.move();
