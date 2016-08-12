@@ -10,13 +10,7 @@
 
 #### [Live demo] (https://cdn.rawgit.com/petya-v/HemingwaySpecial/master/HotAirBalloon/index.html)
 
-### [Short youtube trailer] (https://www.youtube.com/watch?v=WBmOKckr2Ts) 
-
-![picture 1] (http://best.telerikacademy.com/Images/424/5a3e01424_high.jpg)
-![picture 2] (http://best.telerikacademy.com/Images/425/5d6871425_high.jpg)
-![picture 3] (http://best.telerikacademy.com/Images/426/d6b481426_high.jpg)
-
-
+#### [Short youtube trailer] (https://www.youtube.com/watch?v=WBmOKckr2Ts) 
 
 #The Hemingway-Special Team
 
@@ -30,3 +24,6 @@
 
 *Season 2016/2017*
 
+![picture 1] (http://best.telerikacademy.com/Images/424/5a3e01424_high.jpg)
+![picture 2] (http://best.telerikacademy.com/Images/425/5d6871425_high.jpg)
+![picture 3] (http://best.telerikacademy.com/Images/426/d6b481426_high.jpg)
