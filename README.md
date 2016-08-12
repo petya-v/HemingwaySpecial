@@ -1,5 +1,22 @@
 # TeamWork - JS UI & DOM
-//TODO : add game info
+
+## The Hot-Air Balloon Game - Instructions
+
+- Start button - start game.
+- Pause button - pause game (press Start again to start).
+- Use *Space* and *Up arrow* to inflate the balloon with hot air and **move up**.
+- Acceleration of gravity will does all its best to **move down**.
+- **Start the game**
+
+#### [Live demo] (https://cdn.rawgit.com/petya-v/HemingwaySpecial/master/HotAirBalloon/index.html)
+
+### [Short youtube trailer] (https://www.youtube.com/watch?v=WBmOKckr2Ts) 
+
+![picture 1] (http://best.telerikacademy.com/Images/424/5a3e01424_high.jpg)
+![picture 2] (http://best.telerikacademy.com/Images/425/5d6871425_high.jpg)
+![picture 3] (http://best.telerikacademy.com/Images/426/d6b481426_high.jpg)
+
+
 
 #The Hemingway-Special Team
 
