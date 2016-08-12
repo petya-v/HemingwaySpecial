@@ -76,35 +76,20 @@
     frameCountsForGenerateClouds = 0;
     intervalForCreateClouds = 100;
     function animationFrame() {
-        var Fy,
-            ay,
-            collision,
+        var collision,
             i,
             currCloud;
-        // ===================== FLUENT MOVEMENT OF BALLOON ===========================
-        Fy = -0.5 * physics.Cd * physics.A * physics.rho * balloon.velocity * balloon.velocity * balloon.velocity / Math.abs(balloon.velocity);
-        Fy = (isNaN(Fy) ? 0 : Fy);                                          // Drag force: Fd = -1/2 * Cd * A * rho * v * v  
-        ay = physics.ag + (Fy / balloon.mass);                              // Calculate acceleration ( F = ma )    
-        balloon.velocity += ay * physics.frameRate;                         // Calculate velocity    
-        balloon.y += balloon.velocity * physics.frameRate * 100;            // Calculate position
-
-        if (balloon.y <= 0 + 60) {                                          // Prevent balloon from overflowing canvas
-            balloon.y = 60 + 1;
-        }
-        // =============================================================================
+        
+        balloon.falling(physics);
 
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         sea.clear();
-        //cloud.clear();
 
         balloon.draw();
 
-        
-
         if (frameCountsForGenerateClouds >= intervalForCreateClouds) {
             addCloud(clouds, cloudsCtx);
-            
             // add score
             document.getElementById("score-number").innerHTML = score;
             score += 1;
