@@ -118,11 +118,11 @@ function HotAirBalloon(x, y, ctx) {
         var Fy, ay;
 
         Fy = -0.5 * physics.Cd * physics.A * physics.rho * this.velocity * this.velocity * this.velocity / Math.abs(this.velocity);
-        Fy = (isNaN(Fy) ? 0 : Fy);                                          // Drag force: Fd = -1/2 * Cd * A * rho * v * v  
+        Fy = (isNaN(Fy) ? 0 : Fy);                                       // Drag force: Fd = -1/2 * Cd * A * rho * v * v  
         ay = physics.ag + (Fy / this.mass);
 
         this.velocity += ay * physics.frameRate;                         // Calculate velocity    
-        this.y += this.velocity * physics.frameRate * 100;            // Calculate position
+        this.y += this.velocity * physics.frameRate * 100;               // Calculate position
 
         if (this.y <= 0 + 60) {                                          // Prevent balloon from overflowing canvas
             this.y = 60 + 1;
