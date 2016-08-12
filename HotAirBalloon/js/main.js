@@ -18,9 +18,14 @@
         clouds,
         frameCountsForGenerateClouds,
         intervalForCreateClouds,
-        score = 0;
+        score = 0,
+        sound;
 
     physics = PhysicsSettings();
+
+    sound = new Sound("music/music.mp3");
+
+
 
     canvas = document.getElementById("balloon-canvas");
     ctx = canvas.getContext("2d");
@@ -78,8 +83,7 @@
         var collision,
             i,
             currCloud;
-            
-
+         
         balloon.falling(physics);
 
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
@@ -91,9 +95,6 @@
         if (frameCountsForGenerateClouds >= intervalForCreateClouds) {
             addCloud(clouds, cloudsCtx, cloudSpeed);
             // add score
-
-
-            
 
             frameCountsForGenerateClouds = 0;
         }
@@ -127,6 +128,7 @@
                 isStop = true;
                 isAnimationOn = false;
                 text();
+                sound.stop();
             }
             else {
                 frameCountsForGenerateClouds += 1;
@@ -140,6 +142,7 @@
         if (!isAnimationOn && !isStop) {
             isAnimationOn = true;
             requestAnimationFrame(animationFrame);
+            sound.play();
         }
 
         // when GameOver, click startGame button to refresh page and start again
