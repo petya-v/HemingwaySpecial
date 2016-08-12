@@ -5,7 +5,7 @@
 - Start button - start game.
 - Pause button - pause game (press Start again to start).
 - Use *Space* and *Up arrow* to inflate the balloon with hot air and **move up**.
-- Acceleration of gravity will do all its best to **move down**.
+- Earth's acceleration will do its best to **move down**.
 - **Start the game**
 
 #### [Live demo] (https://cdn.rawgit.com/petya-v/HemingwaySpecial/master/HotAirBalloon/index.html)
