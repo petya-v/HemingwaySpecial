@@ -61,7 +61,7 @@ function HotAirBalloon(x, y, ctx) {
         this.ctx.closePath();
 
         this.drawFire();
-        
+
         //pilot
         this.ctx.beginPath();
         this.ctx.arc(this.x + 7, this.y - 5, 3, 0, 2 * Math.PI);
@@ -119,6 +119,9 @@ function HotAirBalloon(x, y, ctx) {
     function createImage() {
         var img = new Image();
         img.src = 'images/balloon-pattern.png';
+        img.onload = function () {
+            return;
+        };
         return img;
     }
 }
