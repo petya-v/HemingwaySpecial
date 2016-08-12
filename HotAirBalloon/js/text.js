@@ -2,7 +2,8 @@
 var canvas,
     ctx,
     step = 10,
-    steps = 80;
+    steps = 80,
+    gameOver = "GAME OVER";
 
 function text() {
     canvas = document.getElementById("text-canvas");
@@ -20,7 +21,7 @@ function TextSmallToBig() {
     ctx.save();
     ctx.translate(canvas.width / 2, canvas.height / 2);
     ctx.font = step + "pt Papyrus";
-    ctx.fillText("GAME OVER", 0, 0);
+    ctx.fillText(gameOver, 0, 0);
     ctx.restore();
     if (step < steps) {
         requestAnimationFrame(TextSmallToBig);

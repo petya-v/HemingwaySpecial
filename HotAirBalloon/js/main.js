@@ -62,7 +62,6 @@
     document.body.addEventListener("keydown", function (e) {
         if (e.keyCode === 38 || e.keyCode === 32) {
             balloon.moveUp(physics.reverseSpeedIndex, physics.speedUp);
-            balloon.drawFire();
         }
     });
 
