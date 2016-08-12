@@ -78,7 +78,8 @@
         var collision,
             i,
             currCloud;
-        
+            
+
         balloon.falling(physics);
 
         //TODO: Add function clear to balloon to clean only Balloon range, not all context  (performance)
@@ -88,16 +89,16 @@
         balloon.draw();
 
         if (frameCountsForGenerateClouds >= intervalForCreateClouds) {
-            addCloud(clouds, cloudsCtx);
+            addCloud(clouds, cloudsCtx, cloudSpeed);
             // add score
-            document.getElementById("score-number").innerHTML = score;
-            score += 1;
+
+
+            
 
             frameCountsForGenerateClouds = 0;
         }
 
         for (i = 0; i < clouds.length; i += 1) {
-            //debugger;
             currCloud = clouds[i];
             currCloud.clear();
 
@@ -108,6 +109,12 @@
             else {
                 clouds.splice(i, 1);
                 i -= 1;
+                score += 1;
+                document.getElementById("score-number").innerHTML = score;
+                if (score % 5 === 0) {
+                intervalForCreateClouds -= 5;
+                cloudSpeed += 1;
+            }
             }
         }
 
@@ -136,7 +143,7 @@
         }
 
         // when GameOver, click startGame button to refresh page and start again
-        if(isStop){
+        if (isStop) {
             // location.reload(true); => not working properly on Mozilla
             window.location.href = window.location.href;
         }
@@ -165,15 +172,12 @@
         return false;
     }
 
-    function addCloud(clouds, cloudsCtx) {
+    function addCloud(clouds, cloudsCtx, cloudSpeed) {
         var possibleY = [1, 30, 150, 400],
             randomY = possibleY[Math.floor((Math.random() * 3) + 1)],
             randomYv2 = Math.floor(Math.random() * (canvas.height - 220)),
-            cloudSpeed = 5,
             cloud;
 
-        cloudSpeed = 5;
-        // cloud = new Cloud(canvas.width, randomY, cloudSpeed, cloudsCtx);
         cloud = new Cloud(canvas.width, randomYv2, cloudSpeed, cloudsCtx);
         clouds.push(cloud);
     }
