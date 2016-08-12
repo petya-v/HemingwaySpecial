@@ -19,8 +19,10 @@
         frameCountsForGenerateClouds,
         intervalForCreateClouds,
         score = 0,
-        sound;
+        sound,
+        currCloud;
 
+debugger;
     physics = PhysicsSettings();
 
     sound = new Sound("music/music.mp3");
@@ -49,7 +51,7 @@
     cloudPositionY = canvas.height / 2;
     clouds = [];
 
-    addCloud(clouds, cloudsCtx);
+    addCloud(clouds, cloudsCtx, cloudSpeed);
 
     // create sea
     seaSpeed = 1;
@@ -81,8 +83,7 @@
     intervalForCreateClouds = 100;
     function animationFrame() {
         var collision,
-            i,
-            currCloud;
+            i;
          
         balloon.falling(physics);
 
